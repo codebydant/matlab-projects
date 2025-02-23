@@ -1,0 +1,49 @@
+[System]
+Name='Fuzzy_Logic_food'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=11
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Food'
+Range=[0 5]
+NumMFs=3
+MF1='Bad':'trapmf',[0 0 1 2.5]
+MF2='Normal':'trimf',[1 2.5 4]
+MF3='Bueno':'trapmf',[2.5 4 5 5]
+
+[Input2]
+Name='Service'
+Range=[0 10]
+NumMFs=3
+MF1='Malo':'trapmf',[0 0 3 5]
+MF2='Regularsimbis':'trimf',[2.98916576381365 4.98916576381365 6.98916576381365]
+MF3='Bueno':'trapmf',[5 7 10 10]
+
+[Output1]
+Name='Tip'
+Range=[0 10]
+NumMFs=3
+MF1='No_Lo_merece_perro':'trapmf',[0 0 2 5]
+MF2='Bueno_demos_alguito':'trimf',[3 5 7]
+MF3='Rico_papi':'trapmf',[5 7 10 10]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+2 3, 3 (1) : 1
+2 3, 2 (1) : 1
+3 2, 2 (1) : 1
+3 1, 2 (1) : 1
+2 2, 1 (1) : 1
+1 3, 2 (1) : 1
+3 1, 2 (1) : 1
+3 2, 1 (1) : 1
+3 2, 3 (1) : 1

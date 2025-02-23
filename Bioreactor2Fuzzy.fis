@@ -1,0 +1,69 @@
+[System]
+Name='Bioreactor2Fuzzy'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='error'
+Range=[-1 1]
+NumMFs=5
+MF1='MC':'trapmf',[-1 -1 -0.4 -0.2]
+MF2='C':'trimf',[-0.4 -0.2 0]
+MF3='MF':'trapmf',[0.2 0.4 1 1]
+MF4='OK':'trimf',[-0.2 0 0.2]
+MF5='F':'trimf',[0 0.2 0.4]
+
+[Input2]
+Name='deriError'
+Range=[-1 1]
+NumMFs=5
+MF1='DF':'trapmf',[-1 -1 -0.4 -0.2]
+MF2='D':'trimf',[-0.4 -0.2 0]
+MF3='CF':'trapmf',[0.2 0.4 1 1]
+MF4='E':'trimf',[-0.2 0 0.2]
+MF5='C':'trimf',[0 0.2 0.4]
+
+[Output1]
+Name='T'
+Range=[-1 1]
+NumMFs=5
+MF1='CM':'trapmf',[-1 -1 -0.4 -0.2]
+MF2='C':'trimf',[-0.4 -0.2 0]
+MF3='AM':'trapmf',[0.2 0.4 1 1]
+MF4='Q':'trimf',[-0.2 0 0.2]
+MF5='A':'trimf',[0 0.2 0.4]
+
+[Rules]
+1 1, 2 (1) : 1
+1 2, 2 (1) : 1
+1 4, 1 (1) : 1
+1 5, 1 (1) : 1
+1 3, 1 (1) : 1
+2 1, 4 (1) : 1
+2 2, 4 (1) : 1
+2 4, 2 (1) : 1
+2 5, 2 (1) : 1
+2 3, 1 (1) : 1
+4 1, 5 (1) : 1
+4 2, 5 (1) : 1
+4 4, 4 (1) : 1
+4 5, 2 (1) : 1
+4 3, 2 (1) : 1
+5 1, 3 (1) : 1
+5 2, 5 (1) : 1
+5 4, 5 (1) : 1
+5 5, 4 (1) : 1
+5 3, 4 (1) : 1
+3 1, 3 (1) : 1
+3 2, 3 (1) : 1
+3 4, 3 (1) : 1
+3 5, 5 (1) : 1
+3 3, 5 (1) : 1

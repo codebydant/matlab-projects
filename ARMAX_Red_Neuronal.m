@@ -1,0 +1,10 @@
+%%
+U=Entrada;
+Y=Salida;
+E=zeros(length(U),1);
+Phi=[Y(1:end-1),U(1:end-1),E(1:end-1)]';
+Yd=[Y(2:end)]';
+N=length(U);
+%%
+Red=newff(Phi,Yd,[10],{'tansig','purelin'},'trainlm');
+Red=train(Red,Phi,Yd);

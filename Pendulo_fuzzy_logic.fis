@@ -1,0 +1,59 @@
+[System]
+Name='Pendulo_fuzzy_logic'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Error'
+Range=[-90 90]
+NumMFs=5
+MF1='VN':'trapmf',[-90 -90 -40 -20]
+MF2='VP':'trapmf',[20 40 90 90]
+MF3='N':'trimf',[-40 -20 0]
+MF4='Z':'trimf',[-20 0 20]
+MF5='P':'trimf',[0 20 40]
+
+[Input2]
+Name='deri-Error'
+Range=[-1 1]
+NumMFs=5
+MF1='VN':'trapmf',[-1 -1 -0.6 -0.2]
+MF2='N':'trimf',[-0.4 -0.2 0]
+MF3='VP':'trapmf',[0.2 0.6 1 1]
+MF4='Z':'trimf',[-0.2 0 0.2]
+MF5='P':'trimf',[0 0.2 0.4]
+
+[Output1]
+Name='F'
+Range=[-10 10]
+NumMFs=5
+MF1='VN':'trapmf',[-10 -10 -6 -2]
+MF2='Z':'trimf',[-2 0 2]
+MF3='VP':'trapmf',[2 6 10 10]
+MF4='N':'trimf',[-4 -2 0]
+MF5='P':'trimf',[0 2 4]
+
+[Rules]
+1 1, 3 (1) : 1
+4 4, 2 (1) : 1
+1 3, 2 (1) : 1
+1 3, 5 (1) : 1
+2 2, 3 (1) : 1
+1 4, 5 (1) : 1
+1 5, 1 (1) : 1
+3 1, 3 (1) : 1
+3 2, 5 (1) : 1
+3 4, 5 (1) : 1
+3 5, 5 (1) : 1
+4 1, 5 (1) : 1
+4 2, 5 (1) : 1
+4 4, 2 (1) : 1
+4 5, 4 (1) : 1

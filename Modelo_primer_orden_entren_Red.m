@@ -1,0 +1,10 @@
+U=Entrada';
+Y=Salida';
+%N=length(U);
+X=[Y(3:end);Y(2:end-1);U(1:end-2)];
+D=[U(2:end-1)];
+Red=newff(X,D,[10],{'tansig','purelin'},'trainlm');
+Red.trainparam.epochs=500;
+Red.dividefcn='';
+Red=train(Red,X,D);
+gensim(Red,0.01)
